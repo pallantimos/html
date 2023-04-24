@@ -45,11 +45,7 @@ class Todo_Class {
     done_undone(x) {
         const selectedTodoIndex = todoObjectList.findIndex((item)=> item.id == x);
         console.log(todoObjectList[selectedTodoIndex].isDone);
-        if (todoObjectList[selectedTodoIndex].isDone == false) {
-            todoObjectList[selectedTodoIndex].isDone = true;
-          } else {
-            todoObjectList[selectedTodoIndex].isDone = false;
-          }
+        todoObjectList[selectedTodoIndex].isDone = !todoObjectList[selectedTodoIndex].isDone;
         this.display();
     }
 
@@ -70,11 +66,25 @@ class Todo_Class {
     }
 
     sortAllTask(){
+        const ButtonallTasks = document.getElementById('allTasks')
+
+        if(ButtonallTasks.classList.contains('bold')){
+            ButtonallTasks.classList.remove('bold')
+        }else{
+            ButtonallTasks.classList.add('bold');
+        }
       this.display();
     }
 
     sortUnDoneTask(){
         this.ulElement.innerHTML = "";
+        const ButtonUnDone = document.getElementById('undoneTasks')
+
+        if(ButtonUnDone.classList.contains('bold')){
+            ButtonUnDone.classList.remove('bold')
+        }else{
+            ButtonUnDone.classList.add('bold');
+        }
 
         todoObjectList.forEach((object_item) => {
             if (!object_item.isDone) {
@@ -106,6 +116,14 @@ class Todo_Class {
 
     sortDoneTask(){
         this.ulElement.innerHTML = "";
+
+        const ButtonDone = document.getElementById('doneTasks')
+
+        if(ButtonDone.classList.contains('bold')){
+            ButtonDone.classList.remove('bold')
+        }else{
+            ButtonDone.classList.add('bold');
+        }
 
         todoObjectList.forEach((object_item) => {
             if (object_item.isDone) {
@@ -183,21 +201,22 @@ document.querySelector(".addBtn").addEventListener("click", function() {
     myTodoList.add()
 })
 
-document.querySelector(".allTasks").addEventListener("click", function() {
-    myTodoList.display()
+document.querySelector("#allTasks").addEventListener("click", function() {
+    myTodoList.sortAllTask()
 })
 
-document.querySelector(".undoneTasks").addEventListener("click", function() {
+document.querySelector("#undoneTasks").addEventListener("click", function() {
     myTodoList.sortUnDoneTask()
 })
 
-document.querySelector(".doneTasks").addEventListener("click", function() {
+document.querySelector("#doneTasks").addEventListener("click", function() {
     myTodoList.sortDoneTask()
 })
 
 document.querySelector(".delBtn").addEventListener("click", function() {
     myTodoList.deleteallElement()
 })
+
 
 document.querySelector("#myInput").addEventListener("keydown", function(e) {
     if (e.keyCode == 13) {

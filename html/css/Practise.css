@@ -4,6 +4,7 @@ body, html{
     margin: 0;
 }
 
+
 .container {
     display: flex;
     justify-content: center;
@@ -11,12 +12,27 @@ body, html{
     width: 60%;
     flex-direction: column;
     margin: 0 auto;
+    color: black;
 }
 .spisok {
-    background-color: rgb(50, 139, 167);
+    background-color: rgb(92, 86, 34);
     display: flex;
     height: 60%;
+    align-items: center;
     flex-direction: column;
+}
+
+button{
+  width: 200px;
+  color: black;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+#myInput{
+  width: 80%;
 }
 
 .SortButtons{
@@ -32,9 +48,11 @@ body, html{
   }
   .container .list {
     flex: 1;
+    padding: 0px 40% 0px 40%;
     position: relative;
   }
   .container .list ul{
+    padding: 0px 45px 0px 45px;;
     position: absolute;
     left: 0;
     top: 0;
@@ -52,7 +70,7 @@ body, html{
 
 .far:hover {
   background-color: tomato;
-  color: white;
+  color: black;
 }
 
 .checked {
